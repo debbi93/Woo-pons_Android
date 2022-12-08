@@ -2,13 +2,14 @@ package com.android.woopons.dashboard.ui.home
 
 import android.content.Context
 import android.content.Intent
-import android.view.KeyEvent
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.*
@@ -22,6 +23,7 @@ import com.android.woopons.models.DashboardModel
 import com.android.woopons.models.RecentCouponModel
 import com.android.woopons.models.TopBusinessModel
 import com.android.woopons.utils.AppUtils
+import java.util.*
 
 
 class HomeAdapter(
@@ -92,16 +94,59 @@ class HomeAdapter(
     inner class SearchViewHolder(itemView: LayoutDashboardSearchBinding) :
         RecyclerView.ViewHolder(itemView.root) {
         private val etSearch: EditText = itemView.etSearch
-
+        var searchPlaceTextWatcher: TextWatcher? = null
+        var timer = Timer()
+        val DELAY: Long = 1000
 
         fun bind() {
-            etSearch.setOnKeyListener { v, keyCode, event ->
-                if (event.getAction() === KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+            var searched = false
+            timer.cancel()
+
+            etSearch.setOnEditorActionListener { v, actionId, event ->
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    searched = true
                     onItemClickListener.search(etSearch.text.toString())
-                    return@setOnKeyListener true
+                    hideKeyboard()
+                    return@setOnEditorActionListener true
                 }
-                return@setOnKeyListener false
+                return@setOnEditorActionListener false
             }
+
+            searchPlaceTextWatcher = object : TextWatcher {
+
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    timer.cancel()
+                    timer = Timer()
+                    timer.schedule(
+                        object : TimerTask() {
+                            override fun run() {
+                                if (!searched)
+                                    onItemClickListener.search(s.toString())
+                            }
+                        },
+                        DELAY
+                    )
+                }
+            }
+
+            etSearch.removeTextChangedListener(searchPlaceTextWatcher)
+            etSearch.addTextChangedListener(searchPlaceTextWatcher)
+        }
+
+        fun hideKeyboard() {
+            val imm = mContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(etSearch.windowToken, 0)
         }
 
     }

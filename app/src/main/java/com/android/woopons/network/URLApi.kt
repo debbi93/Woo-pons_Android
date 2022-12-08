@@ -188,5 +188,32 @@ object URLApi {
         this.params.put("rating", rating)
         return this
     }
+
+    fun unlockCoupon(couponId: Int?): URLApi {
+        method = NetworkMethod.POST
+        path = "unlockcoupon"
+        params = JSONObject()
+
+        this.params.put("order_id", couponId)
+        return this
+    }
+
+    fun removeCoupon(couponId: Int?): URLApi {
+        method = NetworkMethod.POST
+        path = "removecoupon"
+        params = JSONObject()
+
+        this.params.put("order_id", couponId)
+        return this
+    }
+
+    fun addCoupon(couponId: Int?): URLApi {
+        method = NetworkMethod.POST
+        path = "addcouponorder"
+        params = JSONObject()
+
+        this.params.put("coupon_id", couponId)
+        return this
+    }
 }
 

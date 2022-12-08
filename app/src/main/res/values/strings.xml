@@ -75,4 +75,10 @@
     <string name="view_all"><u>View all</u></string>
     <string name="explore">Explore</string>
     <string name="see_details">See details</string>
+    <string name="like_to_redeem">Are you sure you\'d like to redeem your Woo-Pon now?</string>
+    <string name="unlock">Unlock</string>
+    <string name="coupon_added">Coupon added</string>
+    <string name="coupon_removed">Coupon removed</string>
+    <string name="coupon_will_expire">Alert: Your coupon will expire within 60 seconds after unlocking</string>
+    <string name="unlocked_new_woopon">You unlocked a new Woo-pon…</string>
 </resources>

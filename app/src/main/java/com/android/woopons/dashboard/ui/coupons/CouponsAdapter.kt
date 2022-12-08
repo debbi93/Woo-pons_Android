@@ -13,6 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.woopons.R
 import com.android.woopons.databinding.LayoutCouponsDesignBinding
 import com.android.woopons.models.RecentCouponModel
+import com.android.woopons.network.NetworkClass
+import com.android.woopons.network.Response
+import com.android.woopons.network.URLApi
 import com.android.woopons.utils.AppUtils
 import com.android.woopons.utils.Constants
 import com.bumptech.glide.Glide
@@ -29,6 +32,10 @@ class CouponsAdapter(
         fun onItemClick(couponsModel: RecentCouponModel, pageType: AppUtils.Companion.Coupons?)
 
         fun loadMore()
+
+        fun getCoupon(couponsModel: RecentCouponModel)
+
+        fun unlockCoupon(couponsModel: RecentCouponModel)
     }
 
     fun setPageType(pageType: AppUtils.Companion.Coupons) {
@@ -83,12 +90,25 @@ class CouponsAdapter(
                 else
                     Glide.with(mContext).load(R.drawable.ic_heart_unfilled).into(ivFavorite)
 
+                if (mPageType == AppUtils.Companion.Coupons.FAVORITES) {
+                    ivFavorite.setOnClickListener(null)
+                } else {
+                    ivFavorite.setOnClickListener {
+                        couponsModel.is_favourited = !(couponsModel.is_favourited ?: false)
+                        notifyItemChanged(position)
+                        changeFavorite(couponsModel.id)
+                    }
+                }
+
                 tvUnlimited.visibility = View.VISIBLE
                 tvGetCoupon.visibility = View.VISIBLE
                 tvGetCoupon.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG)
                 when (mPageType) {
                     AppUtils.Companion.Coupons.NEWLY_ADDED -> {
                         tvGetCoupon.text = mContext.getString(R.string.unlock_coupon)
+                        tvGetCoupon.setOnClickListener {
+                            onItemClickListener.unlockCoupon(couponsModel)
+                        }
                     }
                     AppUtils.Companion.Coupons.HISTORY -> {
                         tvGetCoupon.visibility = View.GONE
@@ -96,9 +116,25 @@ class CouponsAdapter(
                     }
                     else -> {
                         tvGetCoupon.text = mContext.getString(R.string.get_coupon_now)
+                        tvGetCoupon.setOnClickListener {
+                            onItemClickListener.getCoupon(couponsModel)
+                        }
                     }
                 }
             }
+        }
+
+        private fun changeFavorite(id: Int?) {
+            NetworkClass.callApi(URLApi.setFavorite(id), object : Response {
+                override fun onSuccessResponse(response: String?, message: String) {
+
+
+                }
+
+                override fun onErrorResponse(error: String?) {
+
+                }
+            })
         }
 
     }

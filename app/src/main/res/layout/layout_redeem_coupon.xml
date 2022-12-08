@@ -7,24 +7,25 @@
     android:background="@color/white"
     android:gravity="center_horizontal"
     android:orientation="vertical">
-    
+
     <ImageView
         android:id="@+id/ivClose"
         android:layout_width="38dp"
         android:layout_height="38dp"
-        android:src="@drawable/ic_cross"
-        android:padding="13dp"
         android:layout_gravity="end"
+        android:padding="13dp"
+        android:src="@drawable/ic_cross"
         app:tint="@color/black"
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/tvForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_regular"
         android:gravity="center"
-        android:text="@string/you_want_to_logout"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/like_to_redeem"
         android:textColor="@color/primary_color"
         android:textSize="16sp" />
 
@@ -32,7 +33,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
         android:orientation="horizontal">
 
 
@@ -40,19 +40,19 @@
             android:id="@+id/tvNo"
             android:layout_width="90dp"
             android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/layout_logout_no_button"
             android:fontFamily="@font/poppins_regular"
             android:gravity="center"
-            android:layout_marginEnd="10dp"
             android:text="@string/no"
             android:textColor="@color/primary_color"
             android:textSize="@dimen/button_font_size" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cvLogut"
+            android:id="@+id/cvUnlock"
             android:layout_width="90dp"
-            android:layout_marginStart="10dp"
             android:layout_height="40dp"
+            android:layout_marginStart="10dp"
             app:cardBackgroundColor="@color/primary_color"
             app:cardCornerRadius="20dp">
 
@@ -61,10 +61,23 @@
                 android:layout_height="match_parent"
                 android:fontFamily="@font/poppins_regular"
                 android:gravity="center"
-                android:text="@string/logout_without_space"
+                android:text="@string/unlock"
                 android:textColor="@color/gold"
                 android:textSize="@dimen/button_font_size" />
         </androidx.cardview.widget.CardView>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center"
+        android:text="@string/coupon_will_expire"
+        android:textColor="@color/black_fifty"
+        android:textSize="14sp" />
 
 </LinearLayout>

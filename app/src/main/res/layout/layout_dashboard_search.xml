@@ -13,7 +13,7 @@
         android:drawableTint="@color/primary_color"
         android:fontFamily="@font/poppins_regular"
         android:hint="@string/search_here_for_anything"
-        android:imeOptions="actionSearch"
+        android:imeOptions="actionDone"
         android:importantForAutofill="no"
         android:inputType="text"
         android:paddingStart="12dp"

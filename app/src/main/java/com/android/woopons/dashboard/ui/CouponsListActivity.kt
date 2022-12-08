@@ -1,19 +1,25 @@
 package com.android.woopons.dashboard.ui
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.woopons.R
 import com.android.woopons.dashboard.ui.coupons.CouponsAdapter
 import com.android.woopons.databinding.ActivityCouponsListBinding
+import com.android.woopons.databinding.LayoutCouponRemovedBinding
 import com.android.woopons.models.RecentCouponModel
 import com.android.woopons.models.ViewAllModel
 import com.android.woopons.network.NetworkClass
 import com.android.woopons.network.Response
 import com.android.woopons.network.URLApi
 import com.android.woopons.utils.AppUtils
+import com.android.woopons.utils.AppUtils.Companion.showToast
 import com.google.gson.Gson
 import com.kaopiz.kprogresshud.KProgressHUD
 
@@ -59,7 +65,10 @@ class CouponsListActivity : AppCompatActivity() {
                 pageType,
                 object : CouponsAdapter.CouponItemClickListener {
 
-                    override fun onItemClick(couponsModel: RecentCouponModel, pageType: AppUtils.Companion.Coupons?) {
+                    override fun onItemClick(
+                        couponsModel: RecentCouponModel,
+                        pageType: AppUtils.Companion.Coupons?
+                    ) {
                         val intent =
                             Intent(this@CouponsListActivity, CouponDetailsActivity::class.java)
                         intent.putExtra("couponsModel", couponsModel)
@@ -75,6 +84,13 @@ class CouponsListActivity : AppCompatActivity() {
                             val page = (count / limit) + 1
                             loadCoupons(false, page)
                         }
+                    }
+
+                    override fun getCoupon(couponsModel: RecentCouponModel) {
+                        addCoupon(couponsModel)
+                    }
+
+                    override fun unlockCoupon(couponsModel: RecentCouponModel) {
                     }
 
                 })
@@ -107,15 +123,54 @@ class CouponsListActivity : AppCompatActivity() {
                         mCouponList.addAll(couponsList)
                     }
                     couponsAdapter?.notifyDataSetChanged()
+                    if (mCouponList.size > 0) {
+                        binding.ivNoRecords.visibility = View.GONE
+                    } else {
+                        binding.ivNoRecords.visibility = View.VISIBLE
+                    }
                 }
 
             }
 
             override fun onErrorResponse(error: String?) {
                 kProgressHUD?.dismiss()
-                AppUtils.showToast(error ?: "", this@CouponsListActivity)
+                showToast(error ?: "", this@CouponsListActivity)
             }
         })
+    }
+
+    private fun addCoupon(couponModel: RecentCouponModel) {
+        kProgressHUD?.show()
+        NetworkClass.callApi(URLApi.addCoupon(couponModel.id), object : Response {
+            override fun onSuccessResponse(response: String?, message: String) {
+                kProgressHUD?.dismiss()
+                initDialog(this@CouponsListActivity)
+            }
+
+            override fun onErrorResponse(error: String?) {
+                kProgressHUD?.dismiss()
+                showToast(error ?: "", this@CouponsListActivity)
+            }
+        })
+    }
+
+    private fun initDialog(context: FragmentActivity): AlertDialog? {
+        val alertBuilder = AlertDialog.Builder(context)
+        alertBuilder.setCancelable(false)
+        val layoutDialog = LayoutCouponRemovedBinding.inflate(LayoutInflater.from(context))
+        val dialogView: View = layoutDialog.root
+        alertBuilder.setView(dialogView)
+        val alertDialog = alertBuilder.create()
+        alertDialog.show()
+
+        layoutDialog.tvCoupon.text = context.getString(R.string.coupon_added)
+
+        layoutDialog.ivClose.setOnClickListener {
+            alertDialog.dismiss()
+            loadCoupons(true)
+        }
+
+        return alertDialog
     }
 
     private fun getUrl(page: Int = 1): URLApi {

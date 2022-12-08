@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/primary_color"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+    
+    <ImageView
+        android:id="@+id/ivClose"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:src="@drawable/ic_cross"
+        android:padding="13dp"
+        android:layout_gravity="end"
+        app:tint="@color/white"
+        tools:ignore="ContentDescription" />
+
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_coupon_removed"
+        android:layout_gravity="center_horizontal"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvCoupon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/coupon_added"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+</LinearLayout>

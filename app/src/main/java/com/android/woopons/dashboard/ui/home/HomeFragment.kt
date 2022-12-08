@@ -26,7 +26,7 @@ import org.json.JSONObject
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-    lateinit var kProgressHUD: KProgressHUD
+    var kProgressHUD: KProgressHUD? = null
     var dashboardModel: DashboardModel? = null
     var homeAdapter: HomeAdapter? = null
 
@@ -50,7 +50,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.let { context ->
-
             homeAdapter =
                 HomeAdapter(context, dashboardModel, object : HomeAdapter.HomeItemClickListener {
 
@@ -71,7 +70,10 @@ class HomeFragment : Fragment() {
                     }
 
                     override fun search(text: String) {
-                        search(context, text)
+                        if (text.length >0)
+                            search(context, text)
+                        else
+                            fetchHomeData(context)
                     }
 
                 })
@@ -89,20 +91,20 @@ class HomeFragment : Fragment() {
 
     private fun fetchHomeData(context: Context) {
         kProgressHUD = AppUtils.getKProgressHUD(context)
-        kProgressHUD.show()
+        kProgressHUD?.show()
         NetworkClass.callApi(URLApi.getDashboardData(), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
-                kProgressHUD.dismiss()
                 val json = JSONObject(response ?: "")
 
                 dashboardModel = Gson().fromJson(json.toString(), DashboardModel::class.java)
+                kProgressHUD?.dismiss()
                 homeAdapter?.setDashboardModel(dashboardModel)
                 homeAdapter?.notifyDataSetChanged()
 
             }
 
             override fun onErrorResponse(error: String?) {
-                kProgressHUD.dismiss()
+                kProgressHUD?.dismiss()
                 showToast(error ?: "", context)
             }
         })
@@ -120,7 +122,7 @@ class HomeFragment : Fragment() {
             }
 
             override fun onErrorResponse(error: String?) {
-                kProgressHUD.dismiss()
+                kProgressHUD?.dismiss()
                 showToast(error ?: "", context)
             }
         })

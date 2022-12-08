@@ -327,8 +327,7 @@
                 app:text="@string/slide_to_unlock"
                 app:outer_color="@color/secondary_color"
                 app:inner_color="@color/primary_color"
-                app:rotate_icon="false"
-                app:slider_locked="true"/>
+                app:rotate_icon="false"/>
 
             <TextView
                 android:id="@+id/tvNote"
