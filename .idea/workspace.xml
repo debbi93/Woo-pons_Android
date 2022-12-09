@@ -9,21 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66203144-ed25-4552-9367-a1fe82314d73" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/CouponDetailsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/CouponDetailsActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/CouponsListActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/CouponsListActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/coupons/CouponsAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/coupons/CouponsAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/coupons/CouponsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/coupons/CouponsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/home/HomeAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/home/HomeAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/home/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/home/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/models/DashboardModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/models/DashboardModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/network/URLApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/network/URLApi.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_coupons_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_coupons_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_dashboard_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_dashboard_search.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_logout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_logout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-    </list>
+    <list default="true" id="66203144-ed25-4552-9367-a1fe82314d73" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
