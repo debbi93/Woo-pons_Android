@@ -80,8 +80,6 @@ class CouponDetailsActivity : AppCompatActivity() {
             binding.ivFavorite.setOnClickListener(null)
         } else {
             binding.ivFavorite.setOnClickListener {
-                couponModel?.is_favourited = !(couponModel?.is_favourited ?: false)
-                setIsFavorite()
                 changeFavorite()
             }
         }
@@ -146,25 +144,29 @@ class CouponDetailsActivity : AppCompatActivity() {
     }
 
     private fun changeFavorite() {
+        kProgressHUD?.show()
         NetworkClass.callApi(URLApi.setFavorite(couponModel?.id), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
-
-
+                kProgressHUD?.dismiss()
+                couponModel?.is_favourited = !(couponModel?.is_favourited ?: false)
+                setIsFavorite()
+                AppUtils.showToast(message ?: "", this@CouponDetailsActivity)
             }
 
             override fun onErrorResponse(error: String?) {
-
+                kProgressHUD?.dismiss()
+                AppUtils.showToast(error ?: "", this@CouponDetailsActivity)
             }
         })
     }
 
     private fun setRating(rating: Float) {
         kProgressHUD?.show()
-        NetworkClass.callApi(URLApi.setCouponRating(couponModel?.id, rating), object : Response {
+        NetworkClass.callApi(URLApi.setCouponRating(couponModel?.id, couponModel?.order_id, rating), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
                 kProgressHUD?.dismiss()
                 finish()
-
+                AppUtils.showToast(message ?: "", this@CouponDetailsActivity)
             }
 
             override fun onErrorResponse(error: String?) {

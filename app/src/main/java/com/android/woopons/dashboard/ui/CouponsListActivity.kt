@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.FragmentActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.woopons.R
 import com.android.woopons.dashboard.ui.coupons.CouponsAdapter
@@ -22,6 +21,7 @@ import com.android.woopons.utils.AppUtils
 import com.android.woopons.utils.AppUtils.Companion.showToast
 import com.google.gson.Gson
 import com.kaopiz.kprogresshud.KProgressHUD
+import java.text.FieldPosition
 
 class CouponsListActivity : AppCompatActivity() {
 
@@ -91,6 +91,10 @@ class CouponsListActivity : AppCompatActivity() {
                     }
 
                     override fun unlockCoupon(couponsModel: RecentCouponModel) {
+                    }
+
+                    override fun favoriteClick(couponsModel: RecentCouponModel, position: Int) {
+                        changeFavorite(couponsModel, position)
                     }
 
                 })
@@ -195,6 +199,22 @@ class CouponsListActivity : AppCompatActivity() {
                 binding.tvTitle.text = titleName
             }
         }
+    }
+
+    private fun changeFavorite(couponsModel: RecentCouponModel, position: Int) {
+        kProgressHUD?.show()
+        NetworkClass.callApi(URLApi.setFavorite(couponsModel.id), object : Response {
+            override fun onSuccessResponse(response: String?, message: String) {
+                kProgressHUD?.dismiss()
+                showToast(message ?: "", this@CouponsListActivity)
+                couponsModel.is_favourited = !(couponsModel.is_favourited ?: false)
+                couponsAdapter?.notifyItemChanged(position)
+            }
+
+            override fun onErrorResponse(error: String?) {
+
+            }
+        })
     }
 
 }

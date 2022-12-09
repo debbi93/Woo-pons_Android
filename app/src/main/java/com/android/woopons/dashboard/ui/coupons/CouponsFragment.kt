@@ -87,6 +87,10 @@ class CouponsFragment : Fragment() {
                             initDialog(context, couponsModel)
                         }
 
+                        override fun favoriteClick(couponsModel: RecentCouponModel, position: Int) {
+                            changeFavorite(context, couponsModel, position)
+                        }
+
                     })
             binding.rvCouponsList.layoutManager = LinearLayoutManager(context)
             binding.rvCouponsList.adapter = couponsAdapter
@@ -130,10 +134,14 @@ class CouponsFragment : Fragment() {
     fun setCouponsList() {
         mCouponList.clear()
         if (isNewlyAddedSelected) {
-            mCouponList.addAll(myCouponsModel?.newly_added ?: ArrayList())
+            myCouponsModel?.newly_added?.let {
+                mCouponList.addAll(it)
+            }
             couponsAdapter?.setPageType(AppUtils.Companion.Coupons.NEWLY_ADDED)
         } else {
-            mCouponList.addAll(myCouponsModel?.history ?: ArrayList())
+            myCouponsModel?.history?.let {
+                mCouponList.addAll(it)
+            }
             couponsAdapter?.setPageType(AppUtils.Companion.Coupons.HISTORY)
         }
         couponsAdapter?.notifyDataSetChanged()
@@ -194,6 +202,22 @@ class CouponsFragment : Fragment() {
         }
 
         return alertDialog
+    }
+
+    private fun changeFavorite(context: FragmentActivity, couponsModel: RecentCouponModel, position: Int) {
+        kProgressHUD?.show()
+        NetworkClass.callApi(URLApi.setFavorite(couponsModel.id), object : Response {
+            override fun onSuccessResponse(response: String?, message: String) {
+                kProgressHUD?.dismiss()
+                AppUtils.showToast(message ?: "", context)
+                couponsModel.is_favourited = !(couponsModel.is_favourited ?: false)
+                couponsAdapter?.notifyItemChanged(position)
+            }
+
+            override fun onErrorResponse(error: String?) {
+
+            }
+        })
     }
 
 }

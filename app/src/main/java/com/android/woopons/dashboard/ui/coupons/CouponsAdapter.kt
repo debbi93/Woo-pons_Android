@@ -13,9 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.woopons.R
 import com.android.woopons.databinding.LayoutCouponsDesignBinding
 import com.android.woopons.models.RecentCouponModel
-import com.android.woopons.network.NetworkClass
-import com.android.woopons.network.Response
-import com.android.woopons.network.URLApi
 import com.android.woopons.utils.AppUtils
 import com.android.woopons.utils.Constants
 import com.bumptech.glide.Glide
@@ -36,6 +33,8 @@ class CouponsAdapter(
         fun getCoupon(couponsModel: RecentCouponModel)
 
         fun unlockCoupon(couponsModel: RecentCouponModel)
+
+        fun favoriteClick(couponsModel: RecentCouponModel, position: Int)
     }
 
     fun setPageType(pageType: AppUtils.Companion.Coupons) {
@@ -94,9 +93,7 @@ class CouponsAdapter(
                     ivFavorite.setOnClickListener(null)
                 } else {
                     ivFavorite.setOnClickListener {
-                        couponsModel.is_favourited = !(couponsModel.is_favourited ?: false)
-                        notifyItemChanged(position)
-                        changeFavorite(couponsModel.id)
+                        onItemClickListener.favoriteClick(couponsModel, position)
                     }
                 }
 
@@ -122,19 +119,6 @@ class CouponsAdapter(
                     }
                 }
             }
-        }
-
-        private fun changeFavorite(id: Int?) {
-            NetworkClass.callApi(URLApi.setFavorite(id), object : Response {
-                override fun onSuccessResponse(response: String?, message: String) {
-
-
-                }
-
-                override fun onErrorResponse(error: String?) {
-
-                }
-            })
         }
 
     }

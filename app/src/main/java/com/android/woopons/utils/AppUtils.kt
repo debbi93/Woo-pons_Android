@@ -53,7 +53,7 @@ class AppUtils {
         }
 
         fun getKProgressHUD(context: Context): KProgressHUD {
-            return KProgressHUD(context).setCancellable(false).setLabel("Please wait")
+            return KProgressHUD.create(context).setCustomView(ProgressHUD(context)).setSize(64, 64).setWindowColor(context.getResources().getColor(android.R.color.transparent)).setCancellable(false)
         }
 
         fun showToast(message: String, context: Context) {

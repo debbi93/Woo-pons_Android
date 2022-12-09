@@ -23,6 +23,7 @@ import com.google.gson.Gson
 import com.kaopiz.kprogresshud.KProgressHUD
 import org.json.JSONObject
 
+
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
@@ -50,6 +51,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.let { context ->
+            kProgressHUD = AppUtils.getKProgressHUD(context)
+
             homeAdapter =
                 HomeAdapter(context, dashboardModel, object : HomeAdapter.HomeItemClickListener {
 
@@ -70,7 +73,7 @@ class HomeFragment : Fragment() {
                     }
 
                     override fun search(text: String) {
-                        if (text.length >0)
+                        if (text.length > 0)
                             search(context, text)
                         else
                             fetchHomeData(context)
@@ -90,24 +93,34 @@ class HomeFragment : Fragment() {
     }
 
     private fun fetchHomeData(context: Context) {
-        kProgressHUD = AppUtils.getKProgressHUD(context)
-        kProgressHUD?.show()
+        setProgressVisiblity(true)
         NetworkClass.callApi(URLApi.getDashboardData(), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
                 val json = JSONObject(response ?: "")
 
                 dashboardModel = Gson().fromJson(json.toString(), DashboardModel::class.java)
-                kProgressHUD?.dismiss()
+                setProgressVisiblity(false)
                 homeAdapter?.setDashboardModel(dashboardModel)
+                setNoRecordsVisibility()
                 homeAdapter?.notifyDataSetChanged()
 
             }
 
             override fun onErrorResponse(error: String?) {
-                kProgressHUD?.dismiss()
+                setProgressVisiblity(false)
                 showToast(error ?: "", context)
             }
         })
+    }
+
+    fun setProgressVisiblity(visible: Boolean) {
+        activity?.runOnUiThread {
+            if (visible) {
+                kProgressHUD?.show()
+            } else {
+                kProgressHUD?.dismiss()
+            }
+        }
     }
 
     fun search(context: Context, search: String) {
@@ -117,14 +130,26 @@ class HomeFragment : Fragment() {
 
                 dashboardModel = Gson().fromJson(json.toString(), DashboardModel::class.java)
                 homeAdapter?.setDashboardModel(dashboardModel)
+                setNoRecordsVisibility()
                 homeAdapter?.notifyDataSetChanged()
 
             }
 
             override fun onErrorResponse(error: String?) {
-                kProgressHUD?.dismiss()
                 showToast(error ?: "", context)
             }
         })
+    }
+
+    fun setNoRecordsVisibility() {
+        if ((dashboardModel?.categories?.size ?: 0) == 0 && (dashboardModel?.coupons?.size
+                ?: 0) == 0
+            && (dashboardModel?.business?.size
+                ?: 0) == 0 && (dashboardModel?.trending_categories?.size ?: 0) == 0
+        ) {
+            binding.ivNoRecords.visibility = View.VISIBLE
+        } else {
+            binding.ivNoRecords.visibility = View.GONE
+        }
     }
 }

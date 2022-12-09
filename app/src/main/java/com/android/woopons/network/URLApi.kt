@@ -180,12 +180,13 @@ object URLApi {
         return this
     }
 
-    fun setCouponRating(couponId: Int?, rating: Float): URLApi {
+    fun setCouponRating(couponId: Int?, orderId: Int?, rating: Float): URLApi {
         method = NetworkMethod.POST
         path = "addreview"
         params = JSONObject()
 
         this.params.put("coupon_id", couponId)
+        this.params.put("order_id", orderId)
         this.params.put("rating", rating)
         return this
     }
