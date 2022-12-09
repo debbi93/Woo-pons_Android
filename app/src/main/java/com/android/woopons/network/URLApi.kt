@@ -36,6 +36,7 @@ object URLApi {
         params = JSONObject()
         params.put("email", email)
         params.put("password", password)
+        params.put("mobile", true)
         return this
     }
 
