@@ -1,9 +1,16 @@
 package com.android.woopons.dashboard.ui
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.view.LayoutInflater
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
+import com.android.woopons.R
 import com.android.woopons.databinding.ActivityUnlockCouponBinding
+import com.android.woopons.databinding.LayoutCouponExpireAlertBinding
+import com.android.woopons.databinding.LayoutCouponRemovedBinding
 import com.android.woopons.models.RecentCouponModel
 import com.android.woopons.network.NetworkClass
 import com.android.woopons.network.Response
@@ -27,9 +34,10 @@ class UnlockCouponActivity : AppCompatActivity() {
 
         couponModel = intent.extras?.get("couponsModel") as? RecentCouponModel
 
+        unlockCoupon()
+
         binding.rlBack.setOnClickListener {
-            unlockCoupon()
-            finish()
+            initDialog()
         }
 
         binding.tvTitle.text = couponModel?.company_name
@@ -44,14 +52,13 @@ class UnlockCouponActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                unlockCoupon()
+                finish()
             }
         }.start()
     }
 
-    override fun onDestroy() {
-        unlockCoupon()
-        super.onDestroy()
+    override fun onBackPressed() {
+        initDialog()
     }
 
     private fun unlockCoupon() {
@@ -63,6 +70,29 @@ class UnlockCouponActivity : AppCompatActivity() {
             }
         })
 
-        finish()
+    }
+
+    private fun initDialog(): AlertDialog? {
+        val alertBuilder = AlertDialog.Builder(this@UnlockCouponActivity)
+        alertBuilder.setCancelable(false)
+        val layoutDialog = LayoutCouponExpireAlertBinding.inflate(LayoutInflater.from(this@UnlockCouponActivity))
+        val dialogView: View = layoutDialog.root
+        alertBuilder.setView(dialogView)
+        val alertDialog = alertBuilder.create()
+        alertDialog.show()
+
+        layoutDialog.ivClose.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        layoutDialog.tvCancel.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        layoutDialog.cvOk.setOnClickListener {
+            finish()
+        }
+
+        return alertDialog
     }
 }

@@ -92,7 +92,7 @@ class CouponDetailsActivity : AppCompatActivity() {
             }
             AppUtils.Companion.Coupons.HISTORY -> {
                 couponModel?.rating?.let { rating ->
-                    binding.rbGiveRating.rating = rating.toFloat()
+                    binding.rbGiveRating.rating = rating
                 } ?: run {
                     binding.rlRateExperience.visibility = View.VISIBLE
                 }
@@ -236,6 +236,7 @@ class CouponDetailsActivity : AppCompatActivity() {
         alertBuilder.setView(dialogView)
         val alertDialog = alertBuilder.create()
         alertDialog.show()
+
 
         layoutDialog.cvUnlock.setOnClickListener {
             alertDialog.dismiss()

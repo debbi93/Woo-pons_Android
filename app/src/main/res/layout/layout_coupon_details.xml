@@ -300,7 +300,7 @@
                     android:layout_marginEnd="12dp"
                     android:isIndicator="false"
                     android:numStars="5"
-                    android:stepSize="1"
+                    android:stepSize="0.5"
                     android:theme="@style/RatingBar" />
             </RelativeLayout>
 

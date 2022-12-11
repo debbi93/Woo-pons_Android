@@ -101,8 +101,12 @@ class CouponsListActivity : AppCompatActivity() {
         binding.rvCouponsList.layoutManager = LinearLayoutManager(this)
         binding.rvCouponsList.adapter = couponsAdapter
 
-        loadCoupons(true)
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadCoupons(true)
     }
 
     private fun loadCoupons(isFirst: Boolean, page: Int = 1) {

@@ -35,7 +35,7 @@ data class RecentCouponModel(
     val rating_avg: Float?,
     var is_favourited: Boolean?,
     val how_to_use: String?,
-    val rating: Int?
+    val rating: Float?
 ): Serializable
 
 data class TopBusinessModel(
