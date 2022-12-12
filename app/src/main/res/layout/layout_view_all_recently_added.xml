@@ -48,6 +48,8 @@
                         android:layout_above="@+id/ivBarCode"
                         android:layout_alignParentTop="true"
                         android:fontFamily="@font/poppins_regular"
+                        android:ellipsize="end"
+                        android:lines="2"
                         android:paddingStart="10dp"
                         android:paddingTop="7dp"
                         android:paddingEnd="5dp"
@@ -73,6 +75,8 @@
                         android:layout_alignParentBottom="true"
                         android:fontFamily="@font/poppins_regular"
                         android:gravity="bottom"
+                        android:ellipsize="end"
+                        android:lines="2"
                         android:paddingStart="10dp"
                         android:paddingEnd="5dp"
                         android:paddingBottom="7dp"
@@ -93,8 +97,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:background="@color/gold"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true">
+                    android:layout_height="match_parent">
 
 
                     <TextView
@@ -104,9 +107,10 @@
                         android:fontFamily="@font/poppins_medium"
                         android:gravity="center"
                         android:rotation="90"
+                        android:lines="2"
                         android:text="@string/select_categories"
                         android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </RelativeLayout>
             </LinearLayout>
 

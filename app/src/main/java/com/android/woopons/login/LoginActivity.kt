@@ -2,14 +2,17 @@ package com.android.woopons.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputType
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.android.woopons.R
+import com.android.woopons.dashboard.DashboardActivity
 import com.android.woopons.databinding.ActivityLoginBinding
+import com.android.woopons.forgotpassword.ForgotPasswordActivity
+import com.android.woopons.models.UserDataModel
 import com.android.woopons.network.LocalPreference
 import com.android.woopons.network.NetworkClass
 import com.android.woopons.network.Response
-import com.android.woopons.dashboard.DashboardActivity
-import com.android.woopons.forgotpassword.ForgotPasswordActivity
-import com.android.woopons.models.UserDataModel
 import com.android.woopons.network.URLApi
 import com.android.woopons.utils.AppUtils
 import com.android.woopons.utils.AppUtils.Companion.showToast
@@ -21,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     lateinit var kProgressHUD: KProgressHUD
+    var showPassword = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +44,34 @@ class LoginActivity : AppCompatActivity() {
         binding.cvLogin.setOnClickListener {
             validateLogin()
         }
+
+        binding.ivShowPassword.setOnClickListener {
+            showPassword = !showPassword
+            showPassword()
+        }
+
+        showPassword()
+    }
+
+    private fun showPassword() {
+        if (showPassword) {
+            binding.ivShowPassword.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.show
+                )
+            )
+            binding.etPassword.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+        } else {
+            binding.etPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            binding.ivShowPassword.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.hide
+                )
+            )
+        }
+        binding.etPassword.setSelection(binding.etPassword.text.length)
     }
 
     private fun validateLogin() {

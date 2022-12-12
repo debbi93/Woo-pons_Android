@@ -7,10 +7,28 @@
     android:orientation="vertical"
     tools:context=".dashboard.ui.coupons.CouponsFragment">
 
+    <RelativeLayout
+        android:id="@+id/rlToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:background="@color/primary_color">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/title_coupons"
+            android:textColor="@color/white"
+            android:textSize="@dimen/toolbar_title" />
+
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/secondary_color">
+        android:background="@color/secondary_color"
+        android:baselineAligned="false">
 
         <RelativeLayout
             android:id="@+id/rlNewlyAdded"

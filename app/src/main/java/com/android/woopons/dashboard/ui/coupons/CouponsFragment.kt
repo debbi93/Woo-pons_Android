@@ -95,16 +95,16 @@ class CouponsFragment : Fragment() {
             binding.rvCouponsList.layoutManager = LinearLayoutManager(context)
             binding.rvCouponsList.adapter = couponsAdapter
 
-            buttonSelected(context)
+            buttonSelected(context, false)
 
             binding.rlNewlyAdded.setOnClickListener {
                 isNewlyAddedSelected = true
-                buttonSelected(context)
+                buttonSelected(context, true)
             }
 
             binding.rlHistory.setOnClickListener {
                 isNewlyAddedSelected = false
-                buttonSelected(context)
+                buttonSelected(context, true)
             }
         }
     }
@@ -112,12 +112,12 @@ class CouponsFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         activity?.let {
-            fetchCoupons(it)
+            fetchCoupons(it, true)
         }
     }
 
-    private fun buttonSelected(context: Context) {
-        setCouponsList()
+    private fun buttonSelected(context: Context, showNoCoupons: Boolean) {
+        setCouponsList(showNoCoupons)
         if (isNewlyAddedSelected) {
             binding.tvNewlyAdded.setTextColor(context.getColor(R.color.primary_color))
             binding.viewNewlyAdded.visibility = View.VISIBLE
@@ -131,7 +131,7 @@ class CouponsFragment : Fragment() {
         }
     }
 
-    fun setCouponsList() {
+    fun setCouponsList(showNoCoupons: Boolean) {
         mCouponList.clear()
         if (isNewlyAddedSelected) {
             myCouponsModel?.newly_added?.let {
@@ -145,10 +145,10 @@ class CouponsFragment : Fragment() {
             couponsAdapter?.setPageType(AppUtils.Companion.Coupons.HISTORY)
         }
         couponsAdapter?.notifyDataSetChanged()
-        if (mCouponList.size > 0) {
-            binding.ivNoRecords.visibility = View.GONE
-        } else {
+        if (mCouponList.size == 0 && showNoCoupons) {
             binding.ivNoRecords.visibility = View.VISIBLE
+        } else {
+            binding.ivNoRecords.visibility = View.GONE
         }
     }
 
@@ -157,7 +157,7 @@ class CouponsFragment : Fragment() {
         _binding = null
     }
 
-    private fun fetchCoupons(context: Context) {
+    private fun fetchCoupons(context: Context, showNoCoupons: Boolean) {
         kProgressHUD?.show()
         NetworkClass.callApi(URLApi.getMyCoupons(), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
@@ -166,12 +166,13 @@ class CouponsFragment : Fragment() {
 
                 myCouponsModel = Gson().fromJson(json.toString(), MyCouponsModel::class.java)
 
-                setCouponsList()
+                setCouponsList(showNoCoupons)
 
             }
 
             override fun onErrorResponse(error: String?) {
                 kProgressHUD?.dismiss()
+                setCouponsList(showNoCoupons)
                 AppUtils.showToast(error ?: "", context)
             }
         })

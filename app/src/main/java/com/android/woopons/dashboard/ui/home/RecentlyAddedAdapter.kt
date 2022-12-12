@@ -53,9 +53,9 @@ class RecentlyAddedAdapter(
         fun bind(position: Int) {
             mRecentList?.get(position)?.let { couponModel ->
                 Glide.with(mContext).load(Constants.IMAGE_BASE_URL + couponModel.company_logo).centerCrop().into(ivImage)
-                tvCompanyName.text = couponModel.company_name
-                tvCategoryName.text = couponModel.name
-                tvUnlimited.text = couponModel.about
+                tvCompanyName.text = couponModel.name
+                tvCategoryName.text = couponModel.company_category
+                tvUnlimited.text = couponModel.repetition
 
                 llSeeDetails.setOnClickListener {
                     onItemClickListener.onItemClick(couponModel)

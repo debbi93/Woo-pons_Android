@@ -74,7 +74,7 @@ class HomeAdapter(
         if (mDashboardModel == null)
             return 0
         else
-            return 5
+            return 4
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -86,9 +86,10 @@ class HomeAdapter(
     }
 
     override fun getItemViewType(flatPosition: Int): Int {
-        return if (flatPosition == 0) {
-            SEARCH_LAYOUT
-        } else RECYLER_LAYOUT
+//        return if (flatPosition == 0) {
+//            SEARCH_LAYOUT
+//        } else RECYLER_LAYOUT
+        return RECYLER_LAYOUT
     }
 
     inner class SearchViewHolder(itemView: LayoutDashboardSearchBinding) :
@@ -161,7 +162,7 @@ class HomeAdapter(
         fun bind(position: Int) {
             rvHorizontalRecycler.layoutManager = LinearLayoutManager(mContext, HORIZONTAL, false)
             when (position) {
-                1 -> {
+                0 -> {
                     if ((mDashboardModel?.categories?.size ?: 0) > 0) {
                         itemView.visibility = VISIBLE
                     } else {
@@ -190,7 +191,7 @@ class HomeAdapter(
                         onItemClickListener.onViewAllClick(AppUtils.Companion.Dashboard.CATEGORIES)
                     }
                 }
-                2 -> {
+                1 -> {
                     if ((mDashboardModel?.coupons?.size ?: 0) > 0) {
                         itemView.visibility = VISIBLE
                     } else {
@@ -214,7 +215,7 @@ class HomeAdapter(
                         onItemClickListener.onViewAllClick(AppUtils.Companion.Dashboard.RECENTLY_ADDED)
                     }
                 }
-                3 -> {
+                2 -> {
                     if ((mDashboardModel?.business?.size ?: 0) > 0) {
                         itemView.visibility = VISIBLE
                     } else {
@@ -242,7 +243,7 @@ class HomeAdapter(
                         onItemClickListener.onViewAllClick(AppUtils.Companion.Dashboard.TOP_BRANDS)
                     }
                 }
-                4 -> {
+                3 -> {
                     if ((mDashboardModel?.trending_categories?.size ?: 0) > 0) {
                         itemView.visibility = VISIBLE
                     } else {
