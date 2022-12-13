@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.android.woopons.databinding.LayoutDashboardRecentlyAddedBinding
 import com.android.woopons.models.RecentCouponModel
+import com.android.woopons.utils.AppUtils
 import com.android.woopons.utils.Constants
 import com.bumptech.glide.Glide
 
@@ -52,7 +53,7 @@ class RecentlyAddedAdapter(
 
         fun bind(position: Int) {
             mRecentList?.get(position)?.let { couponModel ->
-                Glide.with(mContext).load(Constants.IMAGE_BASE_URL + couponModel.company_logo).centerCrop().into(ivImage)
+                AppUtils.loadImage(mContext, couponModel.company_logo, ivImage)
                 tvCompanyName.text = couponModel.name
                 tvCategoryName.text = couponModel.company_category
                 tvUnlimited.text = couponModel.repetition

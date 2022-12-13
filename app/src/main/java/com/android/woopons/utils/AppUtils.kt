@@ -4,10 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.util.Patterns
 import android.util.TypedValue
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
+import com.android.woopons.R
 import com.android.woopons.login.LoginActivity
 import com.android.woopons.network.LocalPreference
+import com.bumptech.glide.Glide
 import com.kaopiz.kprogresshud.KProgressHUD
 
 
@@ -53,7 +56,7 @@ class AppUtils {
         }
 
         fun getKProgressHUD(context: Context): KProgressHUD {
-            return KProgressHUD.create(context).setCustomView(ProgressHUD(context)).setSize(64, 64).setWindowColor(context.getResources().getColor(android.R.color.transparent)).setCancellable(false)
+            return KProgressHUD.create(context).setCustomView(ProgressHUD(context)).setSize(100, 100).setWindowColor(context.getResources().getColor(android.R.color.transparent)).setCancellable(false)
         }
 
         fun showToast(message: String, context: Context) {
@@ -62,6 +65,10 @@ class AppUtils {
             } else {
                 Toast.makeText(context, message, Toast.LENGTH_LONG).show()
             }
+        }
+
+        fun loadImage(context: Context, url: String?, imageView: ImageView) {
+            Glide.with(context).load(Constants.IMAGE_BASE_URL + url).placeholder(R.drawable.ic_placeholder).centerCrop().into(imageView)
         }
 
         private fun logout(context: Context) {

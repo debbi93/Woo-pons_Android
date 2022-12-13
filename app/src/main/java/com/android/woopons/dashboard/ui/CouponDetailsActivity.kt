@@ -55,10 +55,9 @@ class CouponDetailsActivity : AppCompatActivity() {
             }
         }
 
-        binding.tvTitle.text = couponModel?.company_name
+        binding.tvTitle.text = couponModel?.name
         binding.tvOutletName.text = couponModel?.company_name
-        Glide.with(this).load(Constants.IMAGE_BASE_URL + couponModel?.company_logo).centerCrop()
-            .into(binding.ivImage)
+        AppUtils.loadImage(this, couponModel?.company_logo, binding.ivImage)
         binding.rbRating.rating = couponModel?.rating_avg ?: 0f
         binding.tvRating.text =
             "${couponModel?.rating_avg ?: 0} (${couponModel?.rating_count ?: 0} ratings)"

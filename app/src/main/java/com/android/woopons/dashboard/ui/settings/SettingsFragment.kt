@@ -28,10 +28,10 @@ import com.kaopiz.kprogresshud.KProgressHUD
 
 class SettingsFragment : Fragment() {
 
-    private var _binding: FragmentSettingsBinding? = null
+    private lateinit var binding: FragmentSettingsBinding
     var kProgressHUD: KProgressHUD? = null
 
-    private val binding get() = _binding!!
+//    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +39,7 @@ class SettingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
+        binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         return root
@@ -91,7 +91,7 @@ class SettingsFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+//        _binding = null
     }
 
     private fun initDialog(context: FragmentActivity): AlertDialog? {

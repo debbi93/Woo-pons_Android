@@ -73,8 +73,7 @@ class CouponsAdapter(
 
         fun bind(position: Int) {
             mCouponList?.get(position)?.let { couponsModel ->
-                Glide.with(mContext).load(Constants.IMAGE_BASE_URL + couponsModel.company_logo).centerCrop()
-                    .into(ivImage)
+                AppUtils.loadImage(mContext, couponsModel.company_logo, ivImage)
                 tvOutletName.text = couponsModel.company_name
                 rbRating.rating = couponsModel.rating_avg ?: 0f
                 tvRating.text =

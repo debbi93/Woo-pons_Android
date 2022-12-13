@@ -106,7 +106,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun setAccountData() {
-        Glide.with(this).load(Constants.IMAGE_BASE_URL + LocalPreference.shared.myAccount?.user?.avatar).centerInside()
+        Glide.with(this).load(Constants.IMAGE_BASE_URL + LocalPreference.shared.myAccount?.user?.avatar).centerInside().placeholder(R.drawable.ic_placeholder)
             .into(binding.ivProfile)
 
         binding.etFullName.setText(LocalPreference.shared.myAccount?.user?.name)

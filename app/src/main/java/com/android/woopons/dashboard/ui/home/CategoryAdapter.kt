@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.android.woopons.databinding.LayoutDashboardCategoryBinding
 import com.android.woopons.models.CategoryModel
+import com.android.woopons.utils.AppUtils
 import com.android.woopons.utils.Constants
 import com.bumptech.glide.Glide
 
@@ -48,7 +49,7 @@ class CategoryAdapter(
 
         fun bind(position: Int) {
             mCategoryList?.get(position)?.let { categoryModel ->
-                Glide.with(mContext).load(Constants.IMAGE_BASE_URL + categoryModel.image).centerCrop().into(ivCategory)
+                AppUtils.loadImage(mContext, categoryModel.image, ivCategory)
                 tvCategory.text = categoryModel.name
 
                 itemView.setOnClickListener {

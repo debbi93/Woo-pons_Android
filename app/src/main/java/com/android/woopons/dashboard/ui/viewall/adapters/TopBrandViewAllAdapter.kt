@@ -10,6 +10,7 @@ import com.android.woopons.databinding.LayoutDashboardCategoryBinding
 import com.android.woopons.databinding.LayoutDashboardTopBrandsBinding
 import com.android.woopons.models.CategoryModel
 import com.android.woopons.models.TopBusinessModel
+import com.android.woopons.utils.AppUtils
 import com.android.woopons.utils.Constants
 import com.bumptech.glide.Glide
 
@@ -52,7 +53,7 @@ class TopBrandViewAllAdapter(
 
         fun bind(position: Int) {
             mTopBusinessList?.get(position)?.let { topBusinessModel ->
-                Glide.with(mContext).load(Constants.IMAGE_BASE_URL + topBusinessModel.avatar).centerCrop().into(ivBrands)
+                AppUtils.loadImage(mContext, topBusinessModel.avatar, ivBrands)
 
                 itemView.setOnClickListener {
                     onItemClickListener.onItemClick(topBusinessModel)

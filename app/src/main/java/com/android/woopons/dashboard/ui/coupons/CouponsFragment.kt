@@ -28,7 +28,7 @@ import org.json.JSONObject
 
 class CouponsFragment : Fragment() {
 
-    private var _binding: FragmentCouponsBinding? = null
+    private lateinit var binding: FragmentCouponsBinding
     var kProgressHUD: KProgressHUD? = null
     var myCouponsModel: MyCouponsModel? = null
     var couponsAdapter: CouponsAdapter? = null
@@ -38,7 +38,7 @@ class CouponsFragment : Fragment() {
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
+//    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,7 +46,7 @@ class CouponsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentCouponsBinding.inflate(inflater, container, false)
+        binding = FragmentCouponsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
 
@@ -154,7 +154,7 @@ class CouponsFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+//        _binding = null
     }
 
     private fun fetchCoupons(context: Context, showNoCoupons: Boolean) {

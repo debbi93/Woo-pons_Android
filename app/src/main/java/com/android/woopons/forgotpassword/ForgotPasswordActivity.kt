@@ -56,7 +56,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
         NetworkClass.callApi(URLApi.forgotPassword(email), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
                 kProgressHUD.dismiss()
-                showToast("Email sent", this@ForgotPasswordActivity)
+                showToast(message, this@ForgotPasswordActivity)
                 val intent = Intent(this@ForgotPasswordActivity, LoginActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
