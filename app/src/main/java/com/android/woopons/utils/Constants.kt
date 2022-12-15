@@ -8,4 +8,8 @@ object Constants {
 
     const val IMAGE_BASE_URL = "https://woopons.xcelanceweb.com"
 
+    const val PRIVACY_POLICY = "/privacy-policy"
+    const val TERMS = "/terms"
+    const val ACCESS_TOKEN = "/?access_token="
+
 }

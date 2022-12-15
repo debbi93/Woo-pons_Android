@@ -1,11 +1,13 @@
 package com.android.woopons.dashboard.ui.profile
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.android.woopons.R
+import com.android.woopons.dashboard.ui.upgradeplan.UpgradePlanActivity
 import com.android.woopons.databinding.ActivityProfileBinding
 import com.android.woopons.models.MyAccountModel
 import com.android.woopons.models.UserDataModel
@@ -61,8 +63,6 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(view)
         kProgressHUD = AppUtils.getKProgressHUD(this)
 
-        getMyAccount()
-
         binding.rlBack.setOnClickListener {
             finish()
         }
@@ -83,6 +83,15 @@ class ProfileActivity : AppCompatActivity() {
                 }
         }
 
+        binding.cvUpgradePlan.setOnClickListener {
+            startActivity(Intent(this@ProfileActivity, UpgradePlanActivity::class.java))
+        }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getMyAccount()
     }
 
     private fun getMyAccount() {

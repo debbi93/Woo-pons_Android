@@ -1,33 +1,36 @@
-package com.android.woopons.dashboard.ui.termsconditions
+package com.android.woopons.dashboard.ui.upgradeplan
 
 import android.graphics.Bitmap
 import android.net.http.SslError
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.SslErrorHandler
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import com.android.woopons.databinding.ActivityTermsAndConditionsBinding
+import androidx.appcompat.app.AppCompatActivity
+import com.android.woopons.databinding.ActivityUpgradePlanBinding
+import com.android.woopons.network.LocalPreference
 import com.android.woopons.utils.AppUtils
 import com.android.woopons.utils.Constants
 import com.kaopiz.kprogresshud.KProgressHUD
 
-class TermsAndConditionsActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityTermsAndConditionsBinding
+class UpgradePlanActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityUpgradePlanBinding
     var kProgressHUD: KProgressHUD? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityTermsAndConditionsBinding.inflate(layoutInflater)
+        binding = ActivityUpgradePlanBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        kProgressHUD = AppUtils.getKProgressHUD(this@TermsAndConditionsActivity)
+        kProgressHUD = AppUtils.getKProgressHUD(this@UpgradePlanActivity)
         kProgressHUD?.show()
         binding.rlBack.setOnClickListener {
             finish()
         }
+
         binding.webView.settings.javaScriptEnabled = true
         binding.webView.settings.loadWithOverviewMode = true
         binding.webView.settings.useWideViewPort = true
@@ -54,6 +57,6 @@ class TermsAndConditionsActivity : AppCompatActivity() {
                 kProgressHUD?.dismiss()
             }
         }
-        binding.webView.loadUrl(Constants.IMAGE_BASE_URL + Constants.TERMS)
+        binding.webView.loadUrl(Constants.IMAGE_BASE_URL + Constants.ACCESS_TOKEN + LocalPreference.shared.token?.trim())
     }
 }
