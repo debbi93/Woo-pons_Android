@@ -1,7 +1,12 @@
 package com.android.woopons.changepassword
 
 import android.os.Bundle
+import android.text.InputType
+import android.widget.EditText
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.android.woopons.R
 import com.android.woopons.databinding.ActivityChangePasswordBinding
 import com.android.woopons.network.NetworkClass
 import com.android.woopons.network.Response
@@ -13,6 +18,9 @@ class ChangePasswordActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChangePasswordBinding
     var kProgressHUD: KProgressHUD? = null
+    var showPassword1 = false
+    var showPassword2 = false
+    var showPassword3 = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +35,46 @@ class ChangePasswordActivity : AppCompatActivity() {
         binding.rlBack.setOnClickListener {
             finish()
         }
+
+        binding.ivShowPassword1.setOnClickListener {
+            showPassword1 = !showPassword1
+            showPassword(binding.ivShowPassword1, binding.etOldPassword, showPassword1)
+        }
+
+        binding.ivShowPassword2.setOnClickListener {
+            showPassword2 = !showPassword2
+            showPassword(binding.ivShowPassword2, binding.etNewPassword, showPassword2)
+        }
+
+        binding.ivShowPassword3.setOnClickListener {
+            showPassword3 = !showPassword3
+            showPassword(binding.ivShowPassword3, binding.etConfirmPassword, showPassword3)
+        }
+
+        showPassword(binding.ivShowPassword1, binding.etOldPassword, showPassword1)
+        showPassword(binding.ivShowPassword2, binding.etNewPassword, showPassword2)
+        showPassword(binding.ivShowPassword3, binding.etConfirmPassword, showPassword3)
+    }
+
+    private fun showPassword(ivShowPassword:ImageView, etPassword: EditText, showPassword: Boolean) {
+        if (showPassword) {
+            ivShowPassword.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.show
+                )
+            )
+            etPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+        } else {
+            etPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            ivShowPassword.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.hide
+                )
+            )
+        }
+        etPassword.setSelection(etPassword.text.length)
     }
 
     private fun checkValidations() {
