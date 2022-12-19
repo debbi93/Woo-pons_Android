@@ -16,30 +16,22 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/CouponDetailsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/CouponDetailsActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/coupons/CouponsAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/coupons/CouponsAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/coupons/CouponsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/coupons/CouponsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/home/CategoryAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/home/CategoryAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/home/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/home/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/home/RecentlyAddedAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/home/RecentlyAddedAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/home/TopBrandAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/home/TopBrandAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/home/TrendingCategoryAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/home/TrendingCategoryAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/profile/ProfileActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/profile/ProfileActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/changepassword/ChangePasswordActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/changepassword/ChangePasswordActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/settings/SettingsAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/settings/SettingsAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/settings/SettingsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/settings/SettingsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/viewall/adapters/CategoryViewAllAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/viewall/adapters/CategoryViewAllAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/viewall/adapters/RecentlyAddedViewAllAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/viewall/adapters/RecentlyAddedViewAllAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/viewall/adapters/TopBrandViewAllAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/viewall/adapters/TopBrandViewAllAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/viewall/adapters/TrendingViewAllAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/viewall/adapters/TrendingViewAllAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/utils/AppUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/utils/AppUtils.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/forgotpassword/ForgotPasswordActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/forgotpassword/ForgotPasswordActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/network/URLApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/network/URLApi.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_change_password.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_change_password.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_forgot_password.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_forgot_password.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/sonyvision/.android/avd/Pixel_4_API_32.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[86S7N18504002001]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -104,13 +96,13 @@
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
     </key>
     <key name="android.template.602564531">
       <recent name="com.android.woopons.dashboard.ui" />

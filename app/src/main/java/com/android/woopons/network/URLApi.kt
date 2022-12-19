@@ -80,6 +80,16 @@ object URLApi {
         return this
     }
 
+    fun changePassword(current_password: String, new_password: String): URLApi {
+        method = NetworkMethod.POST
+        path = "updatepassword"
+        params = JSONObject()
+
+        this.params.put("current_password", current_password)
+        this.params.put("new_password", new_password)
+        return this
+    }
+
     fun getCategories(): URLApi {
 
         method = NetworkMethod.GET

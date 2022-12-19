@@ -19,6 +19,7 @@ import com.android.woopons.dashboard.ui.termsconditions.TermsAndConditionsActivi
 import com.android.woopons.databinding.FragmentSettingsBinding
 import com.android.woopons.databinding.LayoutLogoutBinding
 import com.android.woopons.BuildConfig
+import com.android.woopons.changepassword.ChangePasswordActivity
 import com.android.woopons.dashboard.ui.CouponsListActivity
 import com.android.woopons.network.NetworkClass
 import com.android.woopons.network.Response
@@ -56,20 +57,23 @@ class SettingsFragment : Fragment() {
                             startActivity(Intent(context, ProfileActivity::class.java))
                         }
                         1 -> {
+                            startActivity(Intent(context, ChangePasswordActivity::class.java))
+                        }
+                        2 -> {
                             val intent = Intent(context, CouponsListActivity::class.java)
                             intent.putExtra("couponsListType", AppUtils.Companion.Coupons.FAVORITES.name)
                             startActivity(intent)
                         }
-                        2 -> {
+                        3 -> {
                             startActivity(Intent(context, FeedbackActivity::class.java))
                         }
-                        3 -> {
+                        4 -> {
                             startActivity(Intent(context, TermsAndConditionsActivity::class.java))
                         }
-                        4 -> {
+                        5 -> {
                             startActivity(Intent(context, PrivacyPolicyActivity::class.java))
                         }
-                        5 -> {
+                        6 -> {
                             initDialog(context)
                         }
                         else -> {

@@ -29,7 +29,7 @@ class SettingsAdapter(var mContext: Context, var onItemClickListener: SettingsIt
     }
 
     override fun getItemCount(): Int {
-        return 6
+        return 7
     }
 
     inner class SettingsViewHolder(itemView: LayoutSettingsBinding) :
@@ -48,24 +48,28 @@ class SettingsAdapter(var mContext: Context, var onItemClickListener: SettingsIt
                     tvText.text = mContext.getString(R.string.profile)
                 }
                 1 -> {
+                    Glide.with(mContext).load(R.drawable.ic_change_password).centerInside().into(ivIcon)
+                    tvText.text = mContext.getString(R.string.change_password)
+                }
+                2 -> {
                     Glide.with(mContext).load(R.drawable.ic_my_favorites).centerInside().into(ivIcon)
                     tvText.text = mContext.getString(R.string.my_favorites)
                 }
-                2 -> {
+                3 -> {
                     Glide.with(mContext).load(R.drawable.ic_feeback).centerInside().into(ivIcon)
                     tvText.text = mContext.getString(R.string.feedback_suggestion)
                 }
-                3 -> {
+                4 -> {
                     Glide.with(mContext).load(R.drawable.ic_terms_and_conditions).centerInside()
                         .into(ivIcon)
                     tvText.text = mContext.getString(R.string.terms_conditions)
                 }
-                4 -> {
+                5 -> {
                     Glide.with(mContext).load(R.drawable.ic_privacy_policy).centerInside()
                         .into(ivIcon)
                     tvText.text = mContext.getString(R.string.privacy_policy)
                 }
-                5 -> {
+                6 -> {
                     Glide.with(mContext).load(R.drawable.ic_logout).centerInside().into(ivIcon)
                     tvText.text = mContext.getString(R.string.logout)
                 }
