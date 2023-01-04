@@ -29,7 +29,7 @@ object URLApi {
         )
     }
 
-    fun login(email: String, password: String): URLApi {
+    fun login(email: String, password: String, deviceId: String): URLApi {
 
         method = NetworkMethod.POST
         path = "auth/login"
@@ -37,6 +37,7 @@ object URLApi {
         params.put("email", email)
         params.put("password", password)
         params.put("mobile", true)
+        params.put("device_id", deviceId)
         return this
     }
 

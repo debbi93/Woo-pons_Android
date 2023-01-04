@@ -19,7 +19,7 @@
     <string name="save_changes">Save Changes</string>
     <string name="get_great">Get Great</string>
     <string name="deals_discounts_offers">deals, discounts and offers !</string>
-    <string name="spend_through_woopons">Spend through woo-pons on</string>
+    <string name="spend_through_woopons">Spend through WOO-PONS on</string>
     <string name="wide_range_of_brands">wide range of Brands</string>
     <string name="save_more_with">Save more with</string>
     <string name="title_home">Home</string>
@@ -51,7 +51,7 @@
     <string name="version">Version</string>
 
     <string name="unlimited">Unlimited</string>
-    <string name="get_coupon_now"><u>Get coupon now</u></string>
+    <string name="get_coupon_now"><u>Activate WOO-PON</u></string>
     <string name="unlock_coupon"><u>Unlock coupon</u></string>
     <string name="view_details">View details</string>
 
@@ -62,26 +62,30 @@
     <string name="use_repetition">Use repetition</string>
     <string name="whats_unique">What’s UNIQUE</string>
     <string name="about_deal">About deal</string>
-    <string name="how_to_use_offer">How to use offer</string>
+    <string name="about">About</string>
+    <string name="has_been_operating">has been operating for… </string>
+    <string name="would_like_to_know">would like you to know</string>
+    <string name="how_to_use_offer">How to use your WOO-PON:</string>
     <string name="rate_experience">Rate your experience</string>
     <string name="remove_Coupon">Remove Coupon</string>
     <string name="slide_to_unlock">Slide to unlock</string>
-    <string name="get_coupon">Get Coupon</string>
-    <string name="note_for_coupon">Please note: Once clicked, this can not be reversed. Your Woo-Pon will stay active for 60 seconds. Please only redeem at checkout with worker present.</string>
+    <string name="get_coupon">Activate WOO-PON</string>
+    <string name="note_for_coupon">Please note: Once clicked, this can not be reversed. Your WOO-PON will stay active for 60 seconds. Please only redeem at checkout with worker present.</string>
+    <string name="get_directions"><u>Get Directions</u></string>
 
     <string name="search_here_for_anything">Search here for anything…</string>
     <string name="select_categories">Select categories</string>
     <string name="recently_added">Recently added</string>
-    <string name="top_brands">Top Brands</string>
+    <string name="top_brands">Featured Brands</string>
     <string name="trending_categories">Trending categories</string>
     <string name="view_all"><u>View all</u></string>
     <string name="explore">Explore</string>
     <string name="see_details">See details</string>
-    <string name="like_to_redeem">Are you sure you\'d like to redeem your Woo-Pon now?</string>
+    <string name="like_to_redeem">Are you sure you\'d like to redeem your WOO-PON now?</string>
     <string name="unlock">Unlock</string>
     <string name="coupon_added">Coupon added</string>
     <string name="coupon_removed">Coupon removed</string>
     <string name="coupon_will_expire">Alert: Your coupon will expire within 60 seconds after unlocking</string>
-    <string name="unlocked_new_woopon">You unlocked a new Woo-pon…</string>
+    <string name="unlocked_new_woopon">You unlocked a new WOO-PON…</string>
     <string name="coupon_will_expire_now">Alert: Your coupon will expire if you go back</string>
 </resources>

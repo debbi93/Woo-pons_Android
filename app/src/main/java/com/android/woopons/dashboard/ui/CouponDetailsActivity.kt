@@ -2,27 +2,25 @@ package com.android.woopons.dashboard.ui
 
 import android.app.AlertDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.android.woopons.R
 import com.android.woopons.databinding.LayoutCouponDetailsBinding
 import com.android.woopons.databinding.LayoutCouponRemovedBinding
-import com.android.woopons.databinding.LayoutLogoutBinding
 import com.android.woopons.databinding.LayoutRedeemCouponBinding
 import com.android.woopons.models.RecentCouponModel
-import com.android.woopons.models.ViewAllModel
 import com.android.woopons.network.NetworkClass
 import com.android.woopons.network.Response
 import com.android.woopons.network.URLApi
 import com.android.woopons.utils.AppUtils
-import com.android.woopons.utils.Constants
 import com.bumptech.glide.Glide
-import com.google.gson.Gson
 import com.kaopiz.kprogresshud.KProgressHUD
 import com.ncorti.slidetoact.SlideToActView
+import java.util.*
 
 class CouponDetailsActivity : AppCompatActivity() {
 
@@ -60,13 +58,19 @@ class CouponDetailsActivity : AppCompatActivity() {
         AppUtils.loadImage(this, couponModel?.company_logo, binding.ivImage)
         binding.rbRating.rating = couponModel?.rating_avg ?: 0f
         binding.tvRating.text =
-            "${couponModel?.rating_avg ?: 0} (${couponModel?.rating_count ?: 0} ratings)"
+            "${couponModel?.rating_avg ?: 0}"
         setIsFavorite()
         binding.tvLocation.text = couponModel?.company_location
         binding.tvRepition.text = couponModel?.repetition
         binding.tvUnique.text = couponModel?.offer
         binding.tvAboutDeal.text = couponModel?.about
         binding.tvUseOffer.text = couponModel?.how_to_use
+        binding.tvAboutBusinessTitle.text = "${getString(R.string.about)} ${couponModel?.company_name}"
+        binding.tvAboutBusiness.text = couponModel?.business_description
+        binding.tvOperatingTitle.text = "${couponModel?.company_name} ${getString(R.string.has_been_operating)}"
+        binding.tvOperating.text = couponModel?.how_long_in_business
+        binding.tvLikeToKnowTitle.text = "${couponModel?.company_name} ${getString(R.string.would_like_to_know)}"
+        binding.tvLikeToKnow.text = couponModel?.potential_customers_to_know
 
 
         binding.tvRemoveCoupon.visibility = View.GONE
@@ -104,6 +108,17 @@ class CouponDetailsActivity : AppCompatActivity() {
 
         binding.rlBack.setOnClickListener {
             finish()
+        }
+
+        binding.cvGetDirctions.setOnClickListener {
+            couponModel?.latitude?.let { lat ->
+                couponModel?.longitude?.let { lon ->
+                    val uri =
+                        "http://maps.google.com/maps?q=loc:" + lat +"," + lon + " (" + couponModel?.company_name + ")"
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+                    startActivity(intent)
+                }
+            }
         }
 
         binding.rbGiveRating.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->

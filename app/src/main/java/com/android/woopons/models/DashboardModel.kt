@@ -35,7 +35,12 @@ data class RecentCouponModel(
     val rating_avg: Float?,
     var is_favourited: Boolean?,
     val how_to_use: String?,
-    val rating: Float?
+    val rating: Float?,
+    val business_description: String?,
+    val how_long_in_business: String?,
+    val potential_customers_to_know: String?,
+    val latitude: Double?,
+    val longitude: Double?
 ): Serializable
 
 data class TopBusinessModel(

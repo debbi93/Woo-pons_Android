@@ -7,11 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
-import com.android.woopons.R
 import com.android.woopons.databinding.ActivityUnlockCouponBinding
 import com.android.woopons.databinding.LayoutCouponExpireAlertBinding
-import com.android.woopons.databinding.LayoutCouponRemovedBinding
 import com.android.woopons.models.RecentCouponModel
 import com.android.woopons.network.NetworkClass
 import com.android.woopons.network.Response
@@ -46,7 +43,7 @@ class UnlockCouponActivity : AppCompatActivity() {
 
         binding.tvCoupon.text = couponModel?.coupon_code
 
-        binding.tvHowToUse.text = couponModel?.how_to_use
+        binding.tvHowToUse.text = couponModel?.business_description
 
         object : CountDownTimer(60000, 1000) {
             override fun onTick(millisUntilFinished: Long) {

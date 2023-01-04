@@ -77,7 +77,7 @@ class CouponsAdapter(
                 tvOutletName.text = couponsModel.company_name
                 rbRating.rating = couponsModel.rating_avg ?: 0f
                 tvRating.text =
-                    "${couponsModel.rating_avg ?: 0} (${couponsModel.rating_count ?: 0} ratings)"
+                    "${couponsModel.rating_avg ?: 0}"
                 tvUnlimited.text = couponsModel.repetition
 
                 cvViewDetails.setOnClickListener {

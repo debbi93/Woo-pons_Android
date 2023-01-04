@@ -2,6 +2,7 @@ package com.android.woopons.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.text.InputType
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -92,7 +93,8 @@ class LoginActivity : AppCompatActivity() {
     private fun login(email: String, password: String) {
         kProgressHUD = AppUtils.getKProgressHUD(this)
         kProgressHUD.show()
-        NetworkClass.callApi(URLApi.login(email, password), object : Response {
+        val deviceId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        NetworkClass.callApi(URLApi.login(email, password, deviceId), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
                 val json = JSONObject(response ?: "")
                 LocalPreference.shared.user =
