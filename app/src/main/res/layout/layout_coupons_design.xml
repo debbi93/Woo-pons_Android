@@ -150,12 +150,12 @@
                             android:textColor="@color/gold"
                             android:textSize="@dimen/button_font_size" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:src="@drawable/ic_next"
-                            app:tint="@color/gold" />
+<!--                        <ImageView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginStart="8dp"-->
+<!--                            android:src="@drawable/ic_next"-->
+<!--                            app:tint="@color/gold" />-->
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
