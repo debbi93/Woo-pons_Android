@@ -13,140 +13,72 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp">
+            android:layout_height="match_parent">
+            
+            <ImageView
+                android:id="@+id/ivImage"
+                android:layout_width="match_parent"
+                android:layout_height="136dp"/>
 
             <RelativeLayout
-                android:layout_width="258dp"
-                android:layout_height="124dp">
-
-                <ImageView
-                    android:id="@+id/ivCategory"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_recently_added"
-                    tools:ignore="ContentDescription" />
-
-                <RelativeLayout
-                    android:layout_width="187dp"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/tvCompanyName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_above="@+id/ivBarCode"
-                        android:layout_alignParentTop="true"
-                        android:fontFamily="@font/poppins_regular"
-                        android:paddingStart="10dp"
-                        android:lines="1"
-                        android:ellipsize="end"
-                        android:paddingTop="7dp"
-                        android:paddingEnd="5dp"
-                        android:text="@string/select_categories"
-                        android:textColor="@color/white"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:id="@+id/ivBarCode"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_centerInParent="true"
-                        android:layout_margin="12dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_barcode"
-                        tools:ignore="ContentDescription" />
-
-                    <TextView
-                        android:id="@+id/tvUnlimited"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/ivBarCode"
-                        android:layout_alignParentBottom="true"
-                        android:fontFamily="@font/poppins_regular"
-                        android:gravity="bottom"
-                        android:paddingStart="10dp"
-                        android:ellipsize="end"
-                        android:lines="1"
-                        android:paddingEnd="5dp"
-                        android:paddingBottom="7dp"
-                        android:text="@string/select_categories"
-                        android:textColor="@color/white"
-                        android:textSize="14sp" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="71dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/ic_recently_added_gold"
-                        tools:ignore="ContentDescription" />
-
-                    <TextView
-                        android:id="@+id/tvCategoryName"
-                        android:layout_width="match_parent"
-                        android:layout_height="124dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:gravity="center"
-                        android:rotation="90"
-                        android:lines="2"
-                        android:text="@string/select_categories"
-                        android:textColor="@color/white"
-                        android:textSize="14sp" />
-                </RelativeLayout>
+                android:id="@+id/rlNameView"
+                android:layout_width="match_parent"
+                android:layout_height="136dp"
+                android:visibility="gone"
+                android:background="@color/primary_color">
+                <TextView
+                    android:id="@+id/tvImageName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
             </RelativeLayout>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvImage"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                app:cardCornerRadius="17dp">
+            <TextView
+                android:id="@+id/tvCompanyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginStart="8dp"
+                android:layout_below="@+id/ivImage"
+                android:layout_toStartOf="@+id/tvUnlimited"
+                android:lines="1"
+                android:ellipsize="end"
+                android:text="@string/select_categories"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
-                <ImageView
-                    android:id="@+id/ivImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/onboarding_2"
-                    android:scaleType="centerCrop"
-                    tools:ignore="ContentDescription" />
-            </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/tvCategoryName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/select_categories"
+                android:lines="1"
+                android:ellipsize="end"
+                android:layout_marginStart="8dp"
+                android:layout_below="@+id/tvCompanyName"
+                android:textColor="@color/gray"
+                android:textSize="11sp" />
 
-            <LinearLayout
-                android:id="@+id/llSeeDetails"
+            <TextView
+                android:id="@+id/tvUnlimited"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:background="@drawable/see_details_button_background"
-                android:gravity="center_vertical"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                tools:ignore="UseCompoundDrawables">
+                android:gravity="end"
+                android:layout_below="@+id/ivImage"
+                android:ellipsize="end"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="8dp"
+                android:lines="1"
+                android:text="@string/select_categories"
+                android:textColor="@color/gray"
+                android:textSize="13sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="@string/see_details"
-                    android:textColor="@color/primary_color"
-                    android:textSize="14sp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:src="@drawable/ic_arrow_forward"
-                    app:tint="@color/primary_color"
-                    tools:ignore="ContentDescription" />
-            </LinearLayout>
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

@@ -34,7 +34,7 @@
                 android:gravity="center"
                 android:text="@string/get_great"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tvBottom"
@@ -44,8 +44,9 @@
                 android:fontFamily="@font/poppins_light"
                 android:gravity="center"
                 android:text="@string/deals_discounts_offers"
+                android:autoSizeMinTextSize="14sp"
                 android:textColor="@color/primary_color"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:id="@+id/llDots"

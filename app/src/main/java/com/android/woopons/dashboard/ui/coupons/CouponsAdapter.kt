@@ -69,11 +69,19 @@ class CouponsAdapter(
         private val tvGetCoupon: TextView = itemView.tvGetCoupon
         private val cvViewDetails: CardView = itemView.cvViewDetails
         private val ivFavorite = itemView.ivFavorite
+        private val rlNameView = itemView.rlNameView
+        private val tvImageName = itemView.tvImageName
 
 
         fun bind(position: Int) {
             mCouponList?.get(position)?.let { couponsModel ->
-                AppUtils.loadImage(mContext, couponsModel.company_logo, ivImage)
+                if (couponsModel.company_logo?.isBlank() ?: true) {
+                    rlNameView.visibility = View.VISIBLE
+                    tvImageName.text = AppUtils.getAcronyms(couponsModel.company_name)
+                } else {
+                    rlNameView.visibility = View.GONE
+                    AppUtils.loadImage(mContext, couponsModel.company_logo, ivImage)
+                }
                 tvOutletName.text = couponsModel.company_name
                 rbRating.rating = couponsModel.rating_avg ?: 0f
                 tvRating.text =

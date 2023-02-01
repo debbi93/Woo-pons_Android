@@ -55,7 +55,13 @@ class CouponDetailsActivity : AppCompatActivity() {
 
         binding.tvTitle.text = couponModel?.name
         binding.tvOutletName.text = couponModel?.company_name
-        AppUtils.loadImage(this, couponModel?.company_logo, binding.ivImage)
+        if (couponModel?.company_logo?.isBlank() ?: true) {
+            binding.rlNameView.visibility = View.VISIBLE
+            binding.tvImageName.text = AppUtils.getAcronyms(couponModel?.company_name)
+        } else {
+            binding.rlNameView.visibility = View.GONE
+            AppUtils.loadImage(this, couponModel?.company_logo, binding.ivImage)
+        }
         binding.rbRating.rating = couponModel?.rating_avg ?: 0f
         binding.tvRating.text =
             "${couponModel?.rating_avg ?: 0}"
@@ -152,9 +158,9 @@ class CouponDetailsActivity : AppCompatActivity() {
 
     private fun setIsFavorite() {
         if (couponModel?.is_favourited ?: false)
-            Glide.with(this).load(R.drawable.ic_heart_filled).into(binding.ivFavorite)
+            binding.ivFavorite.setImageResource(R.drawable.ic_heart_filled)
         else
-            Glide.with(this).load(R.drawable.ic_heart_unfilled).into(binding.ivFavorite)
+            binding.ivFavorite.setImageResource(R.drawable.ic_heart_unfilled)
     }
 
     private fun changeFavorite() {

@@ -93,7 +93,7 @@ class LoginActivity : AppCompatActivity() {
     private fun login(email: String, password: String) {
         kProgressHUD = AppUtils.getKProgressHUD(this)
         kProgressHUD.show()
-        val deviceId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        val deviceId = "" //Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID)
         NetworkClass.callApi(URLApi.login(email, password, deviceId), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
                 val json = JSONObject(response ?: "")

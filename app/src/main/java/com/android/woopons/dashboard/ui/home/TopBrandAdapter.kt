@@ -2,6 +2,7 @@ package com.android.woopons.dashboard.ui.home
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -47,11 +48,18 @@ class TopBrandAdapter(
     inner class TopBrandViewHolder(itemView: LayoutDashboardTopBrandsBinding) :
         RecyclerView.ViewHolder(itemView.root) {
         private val ivBrands: ImageView = itemView.ivBrands
-
+        private val rlNameView = itemView.rlNameView
+        private val tvImageName = itemView.tvImageName
 
         fun bind(position: Int) {
             mTopBusinessList?.get(position)?.let { topBusinessModel ->
-                AppUtils.loadImage(mContext, topBusinessModel.avatar, ivBrands)
+                if (topBusinessModel.avatar?.isBlank() ?: true) {
+                    rlNameView.visibility = View.VISIBLE
+                    tvImageName.text = AppUtils.getAcronyms(topBusinessModel.name)
+                } else {
+                    rlNameView.visibility = View.GONE
+                    AppUtils.loadImage(mContext, topBusinessModel.avatar, ivBrands)
+                }
 
                 itemView.setOnClickListener {
                     onItemClickListener.onItemClick(topBusinessModel)

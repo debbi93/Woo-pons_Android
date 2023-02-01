@@ -71,6 +71,10 @@ class AppUtils {
             Glide.with(context).load(Constants.IMAGE_BASE_URL + url).placeholder(R.drawable.ic_placeholder).centerCrop().into(imageView)
         }
 
+        fun getAcronyms(text: String?): String {
+            return text?.split(' ')?.mapNotNull { it.firstOrNull()?.toString() }?.reduce { acc, s -> acc + s }?.uppercase() ?: ""
+        }
+
         private fun logout(context: Context) {
             Toast.makeText(
                 context,

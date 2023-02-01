@@ -11,10 +11,10 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.android.woopons.R
 import com.android.woopons.databinding.LayoutOnboardingBinding
 import com.android.woopons.utils.AppUtils
+import com.bumptech.glide.Glide
 
 interface OnBoardingAdapterItemClickListener {
     fun onNextButtonClick(position: Int)
@@ -61,19 +61,19 @@ class OnBoardingAdapter(var mContext: Context, var onItemClickListener: OnBoardi
 
             when (position) {
                 0 -> {
-                    Glide.with(mContext).load(R.drawable.onboarding_1).centerCrop().into(bgImage)
+                    bgImage.setImageResource(R.drawable.onboarding_1)
                     tvTop.text = mContext.getString(R.string.get_great)
                     tvBottom.text = mContext.getString(R.string.deals_discounts_offers)
                 }
                 1 -> {
-                    Glide.with(mContext).load(R.drawable.onboarding_2).centerCrop().into(bgImage)
+                    bgImage.setImageResource(R.drawable.onboarding_2)
                     tvTop.text = mContext.getString(R.string.spend_through_woopons)
                     tvBottom.text = mContext.getString(R.string.wide_range_of_brands)
                 }
                 2 -> {
-                    Glide.with(mContext).load(R.drawable.onboarding_3).centerCrop().into(bgImage)
-                    tvTop.text = mContext.getString(R.string.save_more_with)
-                    tvBottom.text = mContext.getString(R.string.app_name)
+                    bgImage.setImageResource(R.drawable.onboarding_3)
+                    tvTop.text = mContext.getString(R.string.app_name)
+                    tvBottom.text = mContext.getString(R.string.save_more_with)
                 }
                 else -> {
                     tvTop.text = mContext.getString(R.string.get_great)

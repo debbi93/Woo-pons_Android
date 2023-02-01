@@ -10,12 +10,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66203144-ed25-4552-9367-a1fe82314d73" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/CouponDetailsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/CouponDetailsActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/coupons/CouponsAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/coupons/CouponsAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/home/RecentlyAddedAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/home/RecentlyAddedAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/home/TopBrandAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/home/TopBrandAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/viewall/adapters/RecentlyAddedViewAllAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/viewall/adapters/RecentlyAddedViewAllAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/viewall/adapters/TopBrandViewAllAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/dashboard/ui/viewall/adapters/TopBrandViewAllAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/login/LoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/login/LoginActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/onboarding/OnBoardingAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/onboarding/OnBoardingAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/utils/AppUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/woopons/utils/AppUtils.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_coupon_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_coupon_details.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_coupons_design.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_coupons_design.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_dashboard_recently_added.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_dashboard_recently_added.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_dashboard_top_brands.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_dashboard_top_brands.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_onboarding.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_onboarding.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_view_all_recently_added.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_view_all_recently_added.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +91,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="android-custom-view/Users/sonyvision/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
     <property name="android-custom-view/Users/sonyvision/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.7.0/289bbb3a7fea52532f1163487f9469217ee608a9/material-1.7.0-sources.jar!/com/google/android/material/textfield/TextInputEditText.java_SELECTED" value="TextInputEditText" />
     <property name="android-custom-view/Users/sonyvision/.gradle/caches/modules-2/files-2.1/com.ncorti/slidetoact/0.9.0/c52bcc023e27188765c66ccf8c4d69751118449d/slidetoact-0.9.0-sources.jar!/com/ncorti/slidetoact/SlideToActView.kt_SELECTED" value="SlideToActView" />
     <property name="android-custom-view/Users/sonyvision/Documents/Android Projects/Woo-pons_Android/app/src/main/java/com/android/woopons/utils/ProgressHUD.kt_SELECTED" value="ProgressHUD" />

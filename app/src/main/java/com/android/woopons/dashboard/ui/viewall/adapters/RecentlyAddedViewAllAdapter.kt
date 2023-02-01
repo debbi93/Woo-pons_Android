@@ -2,6 +2,7 @@ package com.android.woopons.dashboard.ui.viewall.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -47,22 +48,27 @@ class RecentlyAddedViewAllAdapter(
 
     inner class RecentlyAddedViewHolder(itemView: LayoutViewAllRecentlyAddedBinding) :
         RecyclerView.ViewHolder(itemView.root) {
-        private val ivBarCode: ImageView = itemView.ivBarCode
         private val tvCompanyName: TextView = itemView.tvCompanyName
         private val tvCategoryName: TextView = itemView.tvCategoryName
         private val tvUnlimited: TextView = itemView.tvUnlimited
         private val ivImage: ImageView = itemView.ivImage
-        private val llSeeDetails: LinearLayout = itemView.llSeeDetails
-
+        private val rlNameView = itemView.rlNameView
+        private val tvImageName = itemView.tvImageName
 
         fun bind(position: Int) {
             mRecentList?.get(position)?.let { couponModel ->
-                AppUtils.loadImage(mContext, couponModel.company_logo, ivImage)
+                if (couponModel.company_logo?.isBlank() ?: true) {
+                    rlNameView.visibility = View.VISIBLE
+                    tvImageName.text = AppUtils.getAcronyms(couponModel.company_name)
+                } else {
+                    rlNameView.visibility = View.GONE
+                    AppUtils.loadImage(mContext, couponModel.company_logo, ivImage)
+                }
                 tvCompanyName.text = couponModel.name
                 tvCategoryName.text = couponModel.company_category
                 tvUnlimited.text = couponModel.repetition
 
-                llSeeDetails.setOnClickListener {
+                itemView.setOnClickListener {
                     onItemClickListener.onItemClick(couponModel)
                 }
                 if (position >= (mRecentList!!.size - 4)) {
