@@ -9,6 +9,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.android.woopons.R
+import com.android.woopons.databinding.LayoutActivateCouponAlertBinding
 import com.android.woopons.databinding.LayoutCouponDetailsBinding
 import com.android.woopons.databinding.LayoutCouponRemovedBinding
 import com.android.woopons.databinding.LayoutRedeemCouponBinding
@@ -17,10 +18,12 @@ import com.android.woopons.network.NetworkClass
 import com.android.woopons.network.Response
 import com.android.woopons.network.URLApi
 import com.android.woopons.utils.AppUtils
-import com.bumptech.glide.Glide
 import com.kaopiz.kprogresshud.KProgressHUD
 import com.ncorti.slidetoact.SlideToActView
+import org.json.JSONException
+import org.json.JSONObject
 import java.util.*
+import kotlin.collections.HashMap
 
 class CouponDetailsActivity : AppCompatActivity() {
 
@@ -139,7 +142,7 @@ class CouponDetailsActivity : AppCompatActivity() {
         }
 
         binding.cvGetCoupon.setOnClickListener {
-            getCoupon()
+            initActivateDialog(this@CouponDetailsActivity)
         }
 
         binding.tvRemoveCoupon.setOnClickListener {
@@ -216,7 +219,26 @@ class CouponDetailsActivity : AppCompatActivity() {
         NetworkClass.callApi(URLApi.addCoupon(couponModel?.id), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
                 kProgressHUD?.dismiss()
-                initDialog(this@CouponDetailsActivity, true)
+                try {
+                    response?.let {
+                        val jsonObject = JSONObject(it)
+                        if (jsonObject.has("data")) {
+                            val dict = jsonObject.getJSONObject("data")
+                            if (dict.has("plan_type_upgrade") && dict.getBoolean("plan_type_upgrade")) {
+
+                            } else if (dict.has("id")) {
+                                val orderId = dict.getInt("id")
+                                val intent = Intent(this@CouponDetailsActivity, UnlockCouponActivity::class.java)
+                                intent.putExtra("couponsModel", couponModel)
+                                intent.putExtra("order_id", orderId)
+                                startActivity(intent)
+                                finish()
+                            }
+                        }
+                    }
+                }catch (e: JSONException) {
+                    e.printStackTrace()
+                }
             }
 
             override fun onErrorResponse(error: String?) {
@@ -273,6 +295,31 @@ class CouponDetailsActivity : AppCompatActivity() {
         layoutDialog.ivClose.setOnClickListener {
             alertDialog.dismiss()
         }
+
+        return alertDialog
+    }
+
+    private fun initActivateDialog(context: FragmentActivity): AlertDialog? {
+        val alertBuilder = AlertDialog.Builder(context)
+        alertBuilder.setCancelable(false)
+        val layoutDialog = LayoutActivateCouponAlertBinding.inflate(LayoutInflater.from(context))
+        val dialogView: View = layoutDialog.root
+        alertBuilder.setView(dialogView)
+        val alertDialog = alertBuilder.create()
+        alertDialog.show()
+
+        layoutDialog.tvBack.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        layoutDialog.unlockCoupon.onSlideCompleteListener =
+            object : SlideToActView.OnSlideCompleteListener {
+                override fun onSlideComplete(view: SlideToActView) {
+                    layoutDialog.unlockCoupon.resetSlider()
+                    alertDialog.dismiss()
+                    getCoupon()
+                }
+            }
 
         return alertDialog
     }

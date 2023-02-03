@@ -34,6 +34,7 @@
     <string name="privacy_policy">Privacy policy</string>
     <string name="logout">Log out</string>
     <string name="ok">OK</string>
+    <string name="back">Back</string>
 
     <string name="upload_image"><u>Upload image</u></string>
     <string name="full_name">Full name</string>
@@ -57,6 +58,7 @@
 
     <string name="newly_added">Newly added</string>
     <string name="history">History</string>
+    <string name="favorites">Favorites</string>
 
     <string name="location">Location</string>
     <string name="use_repetition">Use repetition</string>
@@ -88,4 +90,5 @@
     <string name="coupon_will_expire">Alert: Your coupon will expire within 60 seconds after unlocking</string>
     <string name="unlocked_new_woopon">You unlocked a new WOO-PON…</string>
     <string name="coupon_will_expire_now">Alert: Your coupon will expire if you go back</string>
+    <string name="redeem_coupon_note">Please note: Once clicked, this can not be reversed. Your Woo-Pon will stay active for 60 seconds. Please only redeem at checkout with worker present.</string>
 </resources>

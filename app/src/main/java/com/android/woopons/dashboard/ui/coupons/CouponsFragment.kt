@@ -134,10 +134,10 @@ class CouponsFragment : Fragment() {
     fun setCouponsList(showNoCoupons: Boolean) {
         mCouponList.clear()
         if (isNewlyAddedSelected) {
-            myCouponsModel?.newly_added?.let {
+            myCouponsModel?.favorite?.let {
                 mCouponList.addAll(it)
             }
-            couponsAdapter?.setPageType(AppUtils.Companion.Coupons.NEWLY_ADDED)
+            couponsAdapter?.setPageType(AppUtils.Companion.Coupons.FAVORITES)
         } else {
             myCouponsModel?.history?.let {
                 mCouponList.addAll(it)
@@ -191,6 +191,7 @@ class CouponsFragment : Fragment() {
             alertDialog.dismiss()
             val intent = Intent(context, UnlockCouponActivity::class.java)
             intent.putExtra("couponsModel", couponsModel)
+            intent.putExtra("order_id", couponsModel.order_id)
             startActivity(intent)
         }
 

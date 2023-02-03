@@ -60,20 +60,15 @@ class SettingsFragment : Fragment() {
                             startActivity(Intent(context, ChangePasswordActivity::class.java))
                         }
                         2 -> {
-                            val intent = Intent(context, CouponsListActivity::class.java)
-                            intent.putExtra("couponsListType", AppUtils.Companion.Coupons.FAVORITES.name)
-                            startActivity(intent)
-                        }
-                        3 -> {
                             startActivity(Intent(context, FeedbackActivity::class.java))
                         }
-                        4 -> {
+                        3 -> {
                             startActivity(Intent(context, TermsAndConditionsActivity::class.java))
                         }
-                        5 -> {
+                        4 -> {
                             startActivity(Intent(context, PrivacyPolicyActivity::class.java))
                         }
-                        6 -> {
+                        5 -> {
                             initDialog(context)
                         }
                         else -> {

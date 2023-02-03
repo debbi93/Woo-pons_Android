@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 object Constants {
     const val LIMIT_PAGE = 20//40
 
-    const val IMAGE_BASE_URL = "https://woopons.xcelanceweb.com"
+    const val IMAGE_BASE_URL = "https://www.getwoopons.com"
 
     const val PRIVACY_POLICY = "/privacy-policy"
     const val TERMS = "/terms"

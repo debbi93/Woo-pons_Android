@@ -2,6 +2,7 @@ package com.android.woopons.dashboard.ui.settings
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -29,7 +30,7 @@ class SettingsAdapter(var mContext: Context, var onItemClickListener: SettingsIt
     }
 
     override fun getItemCount(): Int {
-        return 7
+        return 6
     }
 
     inner class SettingsViewHolder(itemView: LayoutSettingsBinding) :
@@ -52,22 +53,18 @@ class SettingsAdapter(var mContext: Context, var onItemClickListener: SettingsIt
                     tvText.text = mContext.getString(R.string.change_password)
                 }
                 2 -> {
-                    ivIcon.setImageResource(R.drawable.ic_my_favorites)
-                    tvText.text = mContext.getString(R.string.my_favorites)
-                }
-                3 -> {
                     ivIcon.setImageResource(R.drawable.ic_feeback)
                     tvText.text = mContext.getString(R.string.feedback_suggestion)
                 }
-                4 -> {
+                3 -> {
                     ivIcon.setImageResource(R.drawable.ic_terms_and_conditions)
                     tvText.text = mContext.getString(R.string.terms_conditions)
                 }
-                5 -> {
+                4 -> {
                     ivIcon.setImageResource(R.drawable.ic_privacy_policy)
                     tvText.text = mContext.getString(R.string.privacy_policy)
                 }
-                6 -> {
+                5 -> {
                     ivIcon.setImageResource(R.drawable.ic_logout)
                     tvText.text = mContext.getString(R.string.logout)
                 }

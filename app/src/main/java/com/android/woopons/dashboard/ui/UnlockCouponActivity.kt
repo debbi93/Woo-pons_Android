@@ -21,6 +21,7 @@ class UnlockCouponActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUnlockCouponBinding
     private var couponModel: RecentCouponModel? = null
+    private var orderId:Int = 0
     var kProgressHUD: KProgressHUD? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +33,7 @@ class UnlockCouponActivity : AppCompatActivity() {
         kProgressHUD = AppUtils.getKProgressHUD(this@UnlockCouponActivity)
 
         couponModel = intent.extras?.get("couponsModel") as? RecentCouponModel
+        orderId = intent.extras?.getInt("order_id", 0) ?: 0
 
         unlockCoupon()
 
@@ -39,7 +41,7 @@ class UnlockCouponActivity : AppCompatActivity() {
             initDialog()
         }
 
-        binding.tvTitle.text = couponModel?.company_name
+        binding.tvTitle.text = couponModel?.name
 
         binding.tvCoupon.text = couponModel?.coupon_code
 
@@ -47,7 +49,12 @@ class UnlockCouponActivity : AppCompatActivity() {
 
         object : CountDownTimer(60000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                binding.tvTimer.text = "00:" + (millisUntilFinished / 1000).toString()
+                val time = (millisUntilFinished / 1000)
+                if (time < 10) {
+                    binding.tvTimer.text = "0:0" + time.toString()
+                }else {
+                    binding.tvTimer.text = "0:" + time.toString()
+                }
             }
 
             override fun onFinish() {
@@ -61,7 +68,7 @@ class UnlockCouponActivity : AppCompatActivity() {
     }
 
     private fun unlockCoupon() {
-        NetworkClass.callApi(URLApi.unlockCoupon(couponModel?.order_id), object : Response {
+        NetworkClass.callApi(URLApi.unlockCoupon(orderId), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
             }
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/primary_color"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tvForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center"
+        android:text="@string/redeem_coupon_note"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tvBack"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/layout_white_border_transparent"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:text="@string/back"
+        android:textColor="@color/white"
+        android:textSize="@dimen/button_font_size" />
+
+    <com.ncorti.slidetoact.SlideToActView
+        android:id="@+id/unlock_coupon"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/poppins_regular"
+        app:text_size="@dimen/button_font_size"
+        app:text="@string/slide_to_unlock"
+        app:outer_color="@color/secondary_color"
+        app:inner_color="@color/primary_color"
+        app:rotate_icon="false"/>
+
+</LinearLayout>
