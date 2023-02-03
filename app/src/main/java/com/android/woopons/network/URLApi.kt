@@ -11,7 +11,7 @@ object URLApi {
 
 
     private const val BaseUrl =
-        "https://woopons.xcelanceweb.com/api/v1/" //URL here
+        "https://www.getwoopons.com/api/v1/" //URL here
     private var path: String = ""
     private var params: JSONObject = JSONObject()
     var method: NetworkMethod = NetworkMethod.GET
@@ -29,7 +29,7 @@ object URLApi {
         )
     }
 
-    fun login(email: String, password: String, deviceId: String): URLApi {
+    fun login(email: String, password: String, deviceId: String, token: String): URLApi {
 
         method = NetworkMethod.POST
         path = "auth/login"
@@ -38,6 +38,7 @@ object URLApi {
         params.put("password", password)
         params.put("mobile", true)
         params.put("device_id", deviceId)
+        params.put("device_token", token)
         return this
     }
 

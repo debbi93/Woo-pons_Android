@@ -92,9 +92,9 @@ class CouponsAdapter(
                     onItemClickListener.onItemClick(couponsModel, mPageType)
                 }
                 if (couponsModel.is_favourited ?: false)
-                    Glide.with(mContext).load(R.drawable.ic_heart_filled).into(ivFavorite)
+                    ivFavorite.setImageResource(R.drawable.ic_heart_filled)
                 else
-                    Glide.with(mContext).load(R.drawable.ic_heart_unfilled).into(ivFavorite)
+                    ivFavorite.setImageResource(R.drawable.ic_heart_unfilled)
 
                 if (mPageType == AppUtils.Companion.Coupons.FAVORITES) {
                     ivFavorite.setOnClickListener(null)

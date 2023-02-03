@@ -17,6 +17,8 @@ import com.android.woopons.network.Response
 import com.android.woopons.network.URLApi
 import com.android.woopons.utils.AppUtils
 import com.android.woopons.utils.AppUtils.Companion.showToast
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.Gson
 import com.kaopiz.kprogresshud.KProgressHUD
 import org.json.JSONObject
@@ -93,24 +95,32 @@ class LoginActivity : AppCompatActivity() {
     private fun login(email: String, password: String) {
         kProgressHUD = AppUtils.getKProgressHUD(this)
         kProgressHUD.show()
-        val deviceId = "" //Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID)
-        NetworkClass.callApi(URLApi.login(email, password, deviceId), object : Response {
-            override fun onSuccessResponse(response: String?, message: String) {
-                val json = JSONObject(response ?: "")
-                LocalPreference.shared.user =
-                    Gson().fromJson(json.toString(), UserDataModel::class.java) ?: UserDataModel()
-                LocalPreference.shared.token = LocalPreference.shared.user?.token
-                LocalPreference.shared.password = password
-
-                kProgressHUD.dismiss()
-                startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
-                finish()
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            var token = ""
+            if (task.isSuccessful) {
+                token = task.result
             }
+            val deviceId =
+                "" //Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID)
+            NetworkClass.callApi(URLApi.login(email, password, deviceId, token), object : Response {
+                override fun onSuccessResponse(response: String?, message: String) {
+                    val json = JSONObject(response ?: "")
+                    LocalPreference.shared.user =
+                        Gson().fromJson(json.toString(), UserDataModel::class.java)
+                            ?: UserDataModel()
+                    LocalPreference.shared.token = LocalPreference.shared.user?.token
+                    LocalPreference.shared.password = password
 
-            override fun onErrorResponse(error: String?) {
-                kProgressHUD.dismiss()
-                showToast(error ?: "", this@LoginActivity)
-            }
+                    kProgressHUD.dismiss()
+                    startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
+                    finish()
+                }
+
+                override fun onErrorResponse(error: String?) {
+                    kProgressHUD.dismiss()
+                    showToast(error ?: "", this@LoginActivity)
+                }
+            })
         })
     }
 }

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "706361745092",
+    "project_id": "woopons-c5e19",
+    "storage_bucket": "woopons-c5e19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706361745092:android:55257ab65e5eca884cb391",
+        "android_client_info": {
+          "package_name": "com.app.woopons"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "706361745092-r20kochogbgkcpck0o2j6g3s72bfgt98.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcj7J7MyNNQDp7eHV4_zYg7ySX6mQgVO8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "706361745092-r20kochogbgkcpck0o2j6g3s72bfgt98.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "706361745092-ggnj8macp6elnqghemv11qnu9215q8v6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.woo-pons"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -44,37 +44,34 @@ class SettingsAdapter(var mContext: Context, var onItemClickListener: SettingsIt
             }
             when (position) {
                 0 -> {
-                    Glide.with(mContext).load(R.drawable.ic_profile).centerInside().into(ivIcon)
+                    ivIcon.setImageResource(R.drawable.ic_profile)
                     tvText.text = mContext.getString(R.string.profile)
                 }
                 1 -> {
-                    Glide.with(mContext).load(R.drawable.ic_change_password).centerInside().into(ivIcon)
+                    ivIcon.setImageResource(R.drawable.ic_change_password)
                     tvText.text = mContext.getString(R.string.change_password)
                 }
                 2 -> {
-                    Glide.with(mContext).load(R.drawable.ic_my_favorites).centerInside().into(ivIcon)
+                    ivIcon.setImageResource(R.drawable.ic_my_favorites)
                     tvText.text = mContext.getString(R.string.my_favorites)
                 }
                 3 -> {
-                    Glide.with(mContext).load(R.drawable.ic_feeback).centerInside().into(ivIcon)
+                    ivIcon.setImageResource(R.drawable.ic_feeback)
                     tvText.text = mContext.getString(R.string.feedback_suggestion)
                 }
                 4 -> {
-                    Glide.with(mContext).load(R.drawable.ic_terms_and_conditions).centerInside()
-                        .into(ivIcon)
+                    ivIcon.setImageResource(R.drawable.ic_terms_and_conditions)
                     tvText.text = mContext.getString(R.string.terms_conditions)
                 }
                 5 -> {
-                    Glide.with(mContext).load(R.drawable.ic_privacy_policy).centerInside()
-                        .into(ivIcon)
+                    ivIcon.setImageResource(R.drawable.ic_privacy_policy)
                     tvText.text = mContext.getString(R.string.privacy_policy)
                 }
                 6 -> {
-                    Glide.with(mContext).load(R.drawable.ic_logout).centerInside().into(ivIcon)
+                    ivIcon.setImageResource(R.drawable.ic_logout)
                     tvText.text = mContext.getString(R.string.logout)
                 }
                 else -> {
-                    Glide.with(mContext).load(R.drawable.ic_profile).centerInside().into(ivIcon)
                     tvText.text = mContext.getString(R.string.profile)
                 }
             }
